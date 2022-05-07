@@ -19,6 +19,8 @@ namespace Calculator
         private void acButton_Click(object sender, RoutedEventArgs e)
         {
             resultLabel.Content = "0";
+            result = 0;
+            prevNum = 0;
         }
 
         private void OperaionButtonSelected(object sender, RoutedEventArgs e)
@@ -76,14 +78,34 @@ namespace Calculator
 
         private void dotButton_Click(object sender, RoutedEventArgs e)
         {
-            if(resultLabel.Content.ToString().Contains("."))
-            {
-
-            }
-            else
+            if(!resultLabel.Content.ToString().Contains("."))
             {
                 resultLabel.Content = $"{resultLabel.Content}.";
             }
+        }
+
+        private void percentButton_Click(object sender, RoutedEventArgs e)
+        {
+            double newNum;
+            if (double.TryParse(resultLabel.Content.ToString(), out newNum))
+            {
+                if(selectionOperation == Operations.Add || selectionOperation == Operations.Sub)
+                {
+                    double percentageResult;
+                    newNum = newNum / 100;
+                    if(prevNum != 0)
+                    {
+                        percentageResult = newNum * prevNum;
+                        resultLabel.Content = percentageResult.ToString();
+                    }
+                    else
+                    {
+                        newNum = newNum / 100;
+                        resultLabel.Content = newNum.ToString();
+                    }
+                }
+            }
+
         }
 
         private void OperationNumber(object sender,RoutedEventArgs e)
@@ -138,6 +160,11 @@ namespace Calculator
                 return 0;
             }
             else return n1 / n2;
+        }
+
+        public static double PercentCalculate(double n1,double n2)
+        {
+            return 0;
         }
     }
 

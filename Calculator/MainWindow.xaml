@@ -37,7 +37,8 @@
                 Click="NegativeButton"/>
         <Button x:Name="percentButton" Content="%" Grid.Row="1"
                 Margin="5"
-                Grid.Column="2"/>
+                Grid.Column="2"
+                Click="percentButton_Click"/>
         <Button x:Name="divideButton" Content="/" Grid.Row="1"
                 Margin="5" Grid.Column="3"
                 Click="OperationNumber"/>
@@ -85,7 +86,7 @@
 
         <Button x:Name="zeroButton" Content="0" Grid.Row="5"
                 Margin="5" Grid.ColumnSpan="2"
-                />
+                Click="NumberButton"/>
         <Button x:Name="dotButton" Content="." Grid.Row="5"
                 Margin="5" Grid.Column="2"
                 Click="dotButton_Click"/>
